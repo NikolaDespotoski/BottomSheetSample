@@ -49,7 +49,6 @@ class BottomSheetActivity : AppCompatActivity() {
         }
 
         val recyclerView = binding.layoutBottomSheet1.recyclerview
-        recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = ApplicationAdapter(this, listApplications(this))
         val parentThatHasBottomSheetBehavior = recyclerView.parent.parent as FrameLayout
         mBottomSheetBehavior = BottomSheetBehavior.from(parentThatHasBottomSheetBehavior)

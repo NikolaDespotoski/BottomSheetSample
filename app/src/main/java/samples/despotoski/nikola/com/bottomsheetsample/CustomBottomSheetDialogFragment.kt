@@ -34,7 +34,7 @@ class CustomBottomSheetDialogFragment : BottomSheetDialogFragment() {
         val layoutParams = (contentView.parent as View).layoutParams as CoordinatorLayout.LayoutParams
         val behavior = layoutParams.behavior
         if (behavior != null && behavior is BottomSheetBehavior<*>) {
-            behavior.setBottomSheetCallback(mBottomSheetBehaviorCallback)
+            behavior.addBottomSheetCallback(mBottomSheetBehaviorCallback)
         }
         dialogOffsetText = contentView.findViewById<View>(R.id.dialogOffsetText) as TextView
         dialogStateText = contentView.findViewById<View>(R.id.dialogStateText) as TextView
