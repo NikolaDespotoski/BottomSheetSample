@@ -15,7 +15,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class CustomBottomSheetDialogFragment : BottomSheetDialogFragment() {
     private var dialogOffsetText: TextView? = null
     private var dialogStateText: TextView? = null
-    private val mBottomSheetBehaviorCallback: BottomSheetCallback = object : BottomSheetCallback() {
+    private val bottomSheetBehaviorCallback: BottomSheetCallback = object : BottomSheetCallback() {
         override fun onStateChanged(bottomSheet: View, newState: Int) {
             setStateText(newState)
             if (newState == BottomSheetBehavior.STATE_HIDDEN) {
@@ -34,7 +34,7 @@ class CustomBottomSheetDialogFragment : BottomSheetDialogFragment() {
         val layoutParams = (contentView.parent as View).layoutParams as CoordinatorLayout.LayoutParams
         val behavior = layoutParams.behavior
         if (behavior != null && behavior is BottomSheetBehavior<*>) {
-            behavior.addBottomSheetCallback(mBottomSheetBehaviorCallback)
+            behavior.addBottomSheetCallback(bottomSheetBehaviorCallback)
         }
         dialogOffsetText = contentView.findViewById<View>(R.id.dialogOffsetText) as TextView
         dialogStateText = contentView.findViewById<View>(R.id.dialogStateText) as TextView

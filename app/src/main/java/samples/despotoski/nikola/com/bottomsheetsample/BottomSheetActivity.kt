@@ -4,13 +4,10 @@ import android.content.Context
 import android.content.pm.ApplicationInfo
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -19,7 +16,7 @@ import samples.despotoski.nikola.com.bottomsheetsample.databinding.ActivityBotto
 import java.util.*
 
 class BottomSheetActivity : AppCompatActivity() {
-    private var mBottomSheetBehavior: BottomSheetBehavior<*>? = null
+    private var bottomSheetBehavior: BottomSheetBehavior<*>? = null
 
     lateinit var binding : ActivityBottomSheetBinding
 
@@ -44,15 +41,15 @@ class BottomSheetActivity : AppCompatActivity() {
 
     private fun setupBottomSheet1() {
         binding.showBottomSheet1.setOnClickListener { //Let's peek it, programmatically
-            mBottomSheetBehavior?.peekHeight = binding.layoutBottomSheet1.textViewDragMe.height
+            bottomSheetBehavior?.peekHeight = binding.layoutBottomSheet1.textViewDragMe.height
             binding.layoutBottomSheet1.textViewDragMe.requestLayout()
         }
 
         val recyclerView = binding.layoutBottomSheet1.recyclerview
         recyclerView.adapter = ApplicationAdapter(this, listApplications(this))
         val parentThatHasBottomSheetBehavior = recyclerView.parent.parent as FrameLayout
-        mBottomSheetBehavior = BottomSheetBehavior.from(parentThatHasBottomSheetBehavior)
-        mBottomSheetBehavior?.let {
+        bottomSheetBehavior = BottomSheetBehavior.from(parentThatHasBottomSheetBehavior)
+        bottomSheetBehavior?.let {
             binding.stateText.setText(getStateAsString(it.state))
             it.setBottomSheetCallback(object : BottomSheetCallback() {
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
@@ -67,7 +64,7 @@ class BottomSheetActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        mBottomSheetBehavior?.let {
+        bottomSheetBehavior?.let {
             if (it.state != BottomSheetBehavior.STATE_HIDDEN) {
                 it.setState(BottomSheetBehavior.STATE_COLLAPSED)
             } else {
