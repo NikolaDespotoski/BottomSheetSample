@@ -3,11 +3,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@android:color/white"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/drag_me"
+        android:id="@+id/textViewDragMe"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:gravity="center"
@@ -16,6 +17,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+        android:layout_height="wrap_content"/>
 </LinearLayout>
